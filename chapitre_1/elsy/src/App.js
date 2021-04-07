@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Steps from './components/Steps.jsx';
 
 const tempMin = -20;
 const tempMax = 40;
@@ -16,6 +17,7 @@ class App extends React.Component {
           <p>Heart : {heartMin}</p>
           <p>Temperatue : {tempMin}</p>
           <p>Steps: {stepsMin}</p>
+          <Steps />
         </div>
       </div>
     );
