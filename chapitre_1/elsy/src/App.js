@@ -10,7 +10,15 @@ const stepsMax = 50000;
 
 class App extends React.Component {
   render() {
-    return <div></div>;
+    return (
+      <div className='container-fluid'>
+        <div className='row'>
+          <p>Heart : {heartMin}</p>
+          <p>Temperatue : {tempMin}</p>
+          <p>Steps: {stepsMin}</p>
+        </div>
+      </div>
+    );
   }
 }
 
