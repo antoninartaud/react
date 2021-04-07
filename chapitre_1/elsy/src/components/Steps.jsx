@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/global.css';
 
 class Steps extends React.Component {
   render() {
