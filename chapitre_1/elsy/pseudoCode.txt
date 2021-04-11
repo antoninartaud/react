@@ -1,0 +1,26 @@
+Four boxes
+- water
+- steps
+- heart
+- temperature
+
+Water box have no slider the three others do
+
+Inside every boxe there's data in two parts:
+- quantity data
+- unit data
+
+When you move box x slider :
+- The box x quantity data change 
+- The 'water box' quantity data change accordingly
+
+**********************************************************
+
+Condition : si ce n'est pas le water box (valeur props icon different de 'local_drink'
+    Alors : 
+      - ajouter un tag input de type range
+      - Attributs de l'input min, max, value et oninput 
+      avec des valeurs 
+        - transmises par les props valeurs du composant App
+
+oninput attribut contiendra une fonction callback

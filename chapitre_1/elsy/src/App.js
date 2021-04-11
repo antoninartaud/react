@@ -11,6 +11,25 @@ const stepsMin = 0;
 const stepsMax = 50000;
 
 class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      water: 0,
+      heart: 120,
+      temperature: -10,
+      steps: 3000,
+    };
+
+    this.onHeartChange = this.onHeartChange.bind(this);
+  }
+
+  onHeartChange = (value) => {
+    this.setState({
+      heart: value,
+    });
+  };
+
   render() {
     return (
       <div className='container-fluid'>
@@ -22,7 +41,15 @@ class App extends React.Component {
           <Box icon='directions_walk' color='black' value={3000} unit='steps' />
 
           {/* Heart*/}
-          <Box icon='favorite' color='red' value={120} unit='bpm' />
+          <Box
+            icon='favorite'
+            color='red'
+            value={120}
+            unit='bpm'
+            min={this.state.heart}
+            max={heartMax}
+            onChange={this.onHeartChange()}
+          />
 
           {/* Temperature*/}
           <Box icon='wb_sunny' color='yellow' value={-10} unit='°C' />
