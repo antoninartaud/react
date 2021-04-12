@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Box from './components/Box.jsx';
 import './styles/global.css';
+import Box from './components/Box.jsx';
 
 const tempMin = -20;
 const tempMax = 40;
@@ -48,7 +48,7 @@ class App extends React.Component {
             unit='bpm'
             min={this.state.heart}
             max={heartMax}
-            onChange={this.onHeartChange}
+            // onChange={this.onHeartChange}
           />
 
           {/* Temperature*/}
