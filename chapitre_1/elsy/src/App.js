@@ -24,11 +24,11 @@ class App extends React.Component {
     this.onHeartChange = this.onHeartChange.bind(this);
   }
 
-  onHeartChange = (value) => {
+  onHeartChange(value) {
     this.setState({
       heart: value,
     });
-  };
+  }
 
   render() {
     return (
@@ -48,7 +48,7 @@ class App extends React.Component {
             unit='bpm'
             min={this.state.heart}
             max={heartMax}
-            onChange={this.onHeartChange()}
+            onChange={this.onHeartChange}
           />
 
           {/* Temperature*/}
