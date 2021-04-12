@@ -48,7 +48,7 @@ class App extends React.Component {
             unit='bpm'
             min={this.state.heart}
             max={heartMax}
-            // onChange={this.onHeartChange}
+            onChange={this.onHeartChange}
           />
 
           {/* Temperature*/}
