@@ -49,7 +49,7 @@ class App extends React.Component {
     this.setState({
       temperature: e.target.value,
     });
-    calculateWater();
+    this.calculateWater();
   }
 
   calculateWater() {
@@ -57,17 +57,14 @@ class App extends React.Component {
       water: 1.5,
     });
 
-    let minWater = 1.5;
     let levelTemp = this.state.temperature;
-    let levelHeartBeat = this.state.heart;
-    let levelSteps = this.state.steps;
+    let levelWater = this.state.water;
 
     if (levelTemp > 20) {
-      let tempSpread = levelTemp - 20;
-      let waterSupply = tempSpread * 0.02;
-      let levelWater = minWater + waterSupply;
+      levelWater = levelWater + (levelTemp - 20) * 0.02;
+      // levelWater = levelWater.toFixed(2);
       this.setState({
-        eau: levelWater,
+        water: levelWater,
       });
     }
   }
