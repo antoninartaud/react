@@ -24,6 +24,7 @@ class App extends React.Component {
     this.onHeartChange = this.onHeartChange.bind(this);
     this.onStepsChange = this.onStepsChange.bind(this);
     this.onTemperatureChange = this.onTemperatureChange.bind(this);
+    this.calculateWater = this.calculateWater.bind(this);
   }
 
   onHeartChange(e) {
@@ -43,11 +44,33 @@ class App extends React.Component {
   }
 
   onTemperatureChange(e) {
-    // e.preventDefault();
-    console.log(e.target);
+    e.preventDefault();
     this.setState({
       temperature: e.target.value,
     });
+  }
+
+  calculateWater(e) {
+    e.preventDefault();
+    console.log(e);
+
+    // let minWater = 1.5;
+    // let levelTemp = this.state.temperature;
+    // let levelHeartBeat = this.state.heart;
+    // let levelSteps = this.state.steps;
+
+    // this.setState({
+    //   eau: minWater,
+    // });
+
+    // if (levelTemp > 20) {
+    //   let tempSpread = levelTemp - 20;
+    //   let waterSupply = tempSpread * 0.02;
+    //   let levelWater = minWater + waterSupply;
+    //   this.setState({
+    //     eau: levelWater,
+    //   });
+    // }
   }
 
   render() {
@@ -55,7 +78,13 @@ class App extends React.Component {
       <div className='container-fluid'>
         <div className='row'>
           {/* Water */}
-          <Box icon='local_drink' color='#3A85FF' value={1.5} unit='L' />
+          <Box
+            icon='local_drink'
+            color='#3A85FF'
+            value={this.state.water}
+            unit='L'
+            onLevelChange={this.calculateWater}
+          />
 
           {/* Steps*/}
           <Box

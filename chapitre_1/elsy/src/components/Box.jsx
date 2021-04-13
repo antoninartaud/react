@@ -19,6 +19,7 @@ class Box extends React.Component {
           max={this.props.max}
           value={this.props.value}
           onInput={this.props.onChange}
+          waterLevel={this.props.onLevelChange}
         />
       </div>
     );
