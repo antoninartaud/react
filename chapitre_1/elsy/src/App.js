@@ -44,33 +44,32 @@ class App extends React.Component {
   }
 
   onTemperatureChange(e) {
+    // console.log(e);
     e.preventDefault();
     this.setState({
       temperature: e.target.value,
     });
+    calculateWater();
   }
 
-  calculateWater(e) {
-    e.preventDefault();
-    console.log(e);
+  calculateWater() {
+    this.setState({
+      water: 1.5,
+    });
 
-    // let minWater = 1.5;
-    // let levelTemp = this.state.temperature;
-    // let levelHeartBeat = this.state.heart;
-    // let levelSteps = this.state.steps;
+    let minWater = 1.5;
+    let levelTemp = this.state.temperature;
+    let levelHeartBeat = this.state.heart;
+    let levelSteps = this.state.steps;
 
-    // this.setState({
-    //   eau: minWater,
-    // });
-
-    // if (levelTemp > 20) {
-    //   let tempSpread = levelTemp - 20;
-    //   let waterSupply = tempSpread * 0.02;
-    //   let levelWater = minWater + waterSupply;
-    //   this.setState({
-    //     eau: levelWater,
-    //   });
-    // }
+    if (levelTemp > 20) {
+      let tempSpread = levelTemp - 20;
+      let waterSupply = tempSpread * 0.02;
+      let levelWater = minWater + waterSupply;
+      this.setState({
+        eau: levelWater,
+      });
+    }
   }
 
   render() {
@@ -83,7 +82,7 @@ class App extends React.Component {
             color='#3A85FF'
             value={this.state.water}
             unit='L'
-            onLevelChange={this.calculateWater}
+            onChange={this.calculateWater}
           />
 
           {/* Steps*/}
