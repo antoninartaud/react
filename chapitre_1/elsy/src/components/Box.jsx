@@ -3,7 +3,7 @@ import React from 'react';
 class Box extends React.Component {
   renderBoxSlider() {
     return (
-      <div>
+      <div className='box col-sm-3 col6'>
         <span
           className='material-icons'
           style={{ fontSize: 100, color: this.props.color }}
@@ -18,7 +18,7 @@ class Box extends React.Component {
           min={this.props.min}
           max={this.props.max}
           value={this.props.value}
-          onInput={this.props.onHeartChange}
+          onInput={this.props.onChange}
         />
       </div>
     );
@@ -26,7 +26,7 @@ class Box extends React.Component {
 
   renderBoxWater() {
     return (
-      <div>
+      <div className='box col-sm-3 col6'>
         <span
           className='material-icons'
           style={{ fontSize: 100, color: this.props.color }}
@@ -42,9 +42,9 @@ class Box extends React.Component {
 
   render() {
     if (this.props.unit !== 'L') {
-      return <div className='box col-sm-3 col6'>{this.renderBoxSlider()}</div>;
+      return <>{this.renderBoxSlider()}</>;
     } else {
-      return <div className='box col-sm-3 col6'>{this.renderBoxWater()}</div>;
+      return <>{this.renderBoxWater()}</>;
     }
   }
 }
