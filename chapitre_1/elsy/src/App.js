@@ -56,31 +56,28 @@ class App extends React.Component {
 
   calculateWater() {
     let waterNeeds = 1.5;
-    let { water, heart, temperature, steps } = this.state;
 
-    // let waterLevel = 0;
-
-    // console.log('water', water);
+    let { heart, temperature, steps } = this.state;
 
     if (temperature > 20) {
       waterNeeds += (temperature - 20) * 0.02;
 
-      console.log(water);
+      console.log(waterNeeds);
     }
 
     if (heart > 120) {
-      waterLevel += (heart - 120) * 0.0008;
+      waterNeeds += (heart - 120) * 0.0008;
     }
 
     if (steps > 10000) {
-      waterLevel += (steps - 10000) * 0.00002;
+      waterNeeds += (steps - 10000) * 0.00002;
     }
 
-    this.setState({
-      water: waterLevel,
-    });
+    waterNeeds = parseFloat(waterNeeds.toFixed(2));
 
-    console.log('water final', water);
+    this.setState({
+      water: waterNeeds,
+    });
   }
 
   render() {
