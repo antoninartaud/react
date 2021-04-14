@@ -33,6 +33,7 @@ class App extends React.Component {
     this.setState({
       heart: e.target.value,
     });
+    this.calculateWater();
   }
 
   onStepsChange(e) {
@@ -41,6 +42,7 @@ class App extends React.Component {
     this.setState({
       steps: e.target.value,
     });
+    this.calculateWater();
   }
 
   onTemperatureChange(e) {
@@ -57,19 +59,38 @@ class App extends React.Component {
       water: 1.5,
     });
 
-    let levelTemp = this.state.temperature;
-    let levelWater = this.state.water;
+    console.log('this.state.water', this.state.water);
 
-    if (levelTemp > 20) {
-      levelWater = levelWater + (levelTemp - 20) * 0.02;
-      // levelWater = levelWater.toFixed(2);
-      this.setState({
-        water: levelWater,
-      });
+    let { water, heart, temperature, steps } = this.state;
+
+    let waterLevel = 0;
+
+    console.log('water', water);
+
+    if (temperature > 20) {
+      waterLevel += water + (temperature - 20) * 0.02;
+
+      console.log(water);
     }
+
+    if (heart > 120) {
+      waterLevel += (heart - 120) * 0.0008;
+    }
+
+    if (steps > 10000) {
+      waterLevel += (steps - 10000) * 0.00002;
+    }
+
+    this.setState({
+      water: waterLevel,
+    });
+
+    console.log('water final', water);
   }
 
   render() {
+    console.log('water', this.state.water);
+
     return (
       <div className='container-fluid'>
         <div className='row'>
