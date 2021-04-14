@@ -15,7 +15,7 @@ class App extends React.Component {
     super();
 
     this.state = {
-      water: 0,
+      water: 1.5,
       heart: 120,
       temperature: -10,
       steps: 3000,
@@ -55,20 +55,15 @@ class App extends React.Component {
   }
 
   calculateWater() {
-    this.setState({
-      water: 1.5,
-    });
-
-    console.log('this.state.water', this.state.water);
-
+    let waterNeeds = 1.5;
     let { water, heart, temperature, steps } = this.state;
 
-    let waterLevel = 0;
+    // let waterLevel = 0;
 
-    console.log('water', water);
+    // console.log('water', water);
 
     if (temperature > 20) {
-      waterLevel += water + (temperature - 20) * 0.02;
+      waterNeeds += (temperature - 20) * 0.02;
 
       console.log(water);
     }
@@ -98,6 +93,7 @@ class App extends React.Component {
           <Box
             icon='local_drink'
             color='#3A85FF'
+            // value={this.state.water}
             value={this.state.water}
             unit='L'
             onChange={this.calculateWater}
