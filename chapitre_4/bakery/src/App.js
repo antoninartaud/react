@@ -22,7 +22,7 @@ class App extends React.Component {
     // event.preventDefault();
 
     console.log("i'm in the onclickhandler");
-    // console.log(event);
+    // console.log(event.target.innerText);
     console.log(children);
 
     this.setState = {
