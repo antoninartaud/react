@@ -4,12 +4,22 @@ class Button extends React.Component {
   render() {
     const { isSelected, onClick } = this.props;
 
+    // let message = null;
+
+    // switch (this.props.selected) {
+    //   case 'add':
+    //     message = <Add />;
+    //     break;
+    // }
+
     return (
       <>
-        <button isSelected={this.props.isSelected} onClick={this.props.onClick}>
+        <button
+          isSelected=''
+          onClick={() => this.props.onClick(this.props.children)}
+        >
           {this.props.children}
         </button>
-        <div>{this.props.isSelected}</div>
       </>
     );
   }

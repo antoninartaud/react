@@ -11,33 +11,52 @@ class App extends React.Component {
     super();
 
     this.state = {
-      activeTab: 'add',
+      activeTab: 'Add',
       items: [],
     };
 
     this.onClickHandler = this.onClickHandler.bind(this);
   }
 
-  onClickHandler() {
-    //
+  onClickHandler(children) {
+    // event.preventDefault();
+
+    console.log("i'm in the onclickhandler");
+    // console.log(event);
+    console.log(children);
+
+    this.setState = {
+      activeTab: children,
+    };
+
+    console.log(this.state.activeTab);
   }
 
   render() {
+    let buttonNameRender = null;
+
+    if (this.state.activeTab === 'Add') {
+      buttonNameRender = <Add />;
+    } else if (this.state.activeTab === 'List') {
+      buttonNameRender = <List />;
+    } else if (this.state.activeTab === 'Pay') {
+      buttonNameRender = <Pay />;
+    } else {
+      console.log('where is my tabname ?');
+    }
+
     return (
       <div>
-        <h1>Salut</h1>
-        <Add />
-        <List />
-        <Pay />
-        <Button isSelected={this.state.activeTab} onClick={this.onClickHandler}>
+        <Button isSelected='' onClick={this.onClickHandler}>
           Add
         </Button>
-        <Button isSelected={this.state.activeTab} onClick={this.onClickHandler}>
+        <Button isSelected='' onClick={this.onClickHandler}>
           List
         </Button>
-        <Button isSelected={this.state.activeTab} onClick={this.onClickHandler}>
+        <Button isSelected='' onClick={this.onClickHandler}>
           Pay
         </Button>
+        {buttonNameRender}
       </div>
     );
   }
