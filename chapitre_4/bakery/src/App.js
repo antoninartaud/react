@@ -14,11 +14,12 @@ class App extends React.Component {
       activeTab: 'add',
       items: [],
     };
+
+    this.onClickHandler = this.onClickHandler.bind(this);
   }
 
-  onClickHandler(/*change le state*/) {
-    // switch (this.state.activeTab) {
-    // }
+  onClickHandler() {
+    //
   }
 
   render() {
@@ -28,9 +29,15 @@ class App extends React.Component {
         <Add />
         <List />
         <Pay />
-        <Button isSelected={this.state.activeTab} onClick=''></Button>
-        <Button isSelected={this.state.activeTab} onClick=''></Button>
-        <Button isSelected={this.state.activeTab} onClick=''></Button>
+        <Button isSelected={this.state.activeTab} onClick={this.onClickHandler}>
+          Add
+        </Button>
+        <Button isSelected={this.state.activeTab} onClick={this.onClickHandler}>
+          List
+        </Button>
+        <Button isSelected={this.state.activeTab} onClick={this.onClickHandler}>
+          Pay
+        </Button>
       </div>
     );
   }
