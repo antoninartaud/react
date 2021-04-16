@@ -11,11 +11,14 @@ class App extends React.Component {
     super();
 
     this.state = {
-      activeTab: 'Add',
+      activeTab: 'add',
       items: [],
     };
 
     this.onClickHandler = this.onClickHandler.bind(this);
+    this.selectAdd = this.selectAdd.bind(this);
+    this.selectList = this.selectList.bind(this);
+    this.selectPay = this.selectPay.bind(this);
   }
 
   onClickHandler(children) {
@@ -23,6 +26,8 @@ class App extends React.Component {
 
     // console.log("i'm in the onclickhandler");
     // console.log(event.target.innerText);
+    children = children.toLowerCase();
+
     console.log('children in the onclickhandler', children);
 
     this.setState({
@@ -31,14 +36,34 @@ class App extends React.Component {
     // console.log('this.state.activeTab after set state', this.state.activeTab);
   }
 
+  selectAdd() {
+    this.setState({
+      activeTab: 'add',
+    });
+  }
+
+  selectList() {
+    this.setState({
+      activeTab: 'list',
+    });
+  }
+
+  selectPay() {
+    this.setState({
+      activeTab: 'pay',
+    });
+  }
+
   render() {
     let buttonNameRender = null;
-    // console.log('this.state.activeTab in render', this.state.activeTab);
-    if (this.state.activeTab === 'Add') {
+
+    console.log('this.state.activeTab in render', this.state.activeTab);
+
+    if (this.state.activeTab === 'add') {
       buttonNameRender = <Add />;
-    } else if (this.state.activeTab === 'List') {
+    } else if (this.state.activeTab === 'list') {
       buttonNameRender = <List />;
-    } else if (this.state.activeTab === 'Pay') {
+    } else if (this.state.activeTab === 'pay') {
       buttonNameRender = <Pay />;
     } else {
       console.log('where is my tabname ?');
@@ -46,13 +71,13 @@ class App extends React.Component {
 
     return (
       <div>
-        <Button isSelected='' onClick={this.onClickHandler}>
+        <Button isSelected='' onClick={this.selectAdd}>
           Add
         </Button>
-        <Button isSelected='' onClick={this.onClickHandler}>
+        <Button isSelected='' onClick={this.selectList}>
           List
         </Button>
-        <Button isSelected='' onClick={this.onClickHandler}>
+        <Button isSelected='' onClick={this.selectPay}>
           Pay
         </Button>
         {buttonNameRender}
