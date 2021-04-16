@@ -2,15 +2,7 @@ import React from 'react';
 
 class Button extends React.Component {
   render() {
-    const { isSelected, onClick } = this.props;
-
-    // let message = null;
-
-    // switch (this.props.selected) {
-    //   case 'add':
-    //     message = <Add />;
-    //     break;
-    // }
+    // console.log('this.props in button after render', this.props);
 
     return (
       <>

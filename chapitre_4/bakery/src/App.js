@@ -57,21 +57,22 @@ class App extends React.Component {
 
   addItem(name, price) {
     console.log("i'm in addItem method");
-    this.setState.items({
-      name: '',
-      price: 0,
+    this.setState({
+      items: [...this.state.items, { name, price }],
     });
 
-    console.log(this.state.items);
+    // console.log(this.state.items);
   }
+
   render() {
-    console.log(this.state.items);
+    console.log('ensemble items', this.state.items);
+
     let buttonNameRender = null;
 
-    console.log('this.state.activeTab in render', this.state.activeTab);
+    // console.log('this.state.activeTab in render', this.state.activeTab);
 
     if (this.state.activeTab === 'add') {
-      buttonNameRender = <Add />;
+      buttonNameRender = <Add anotherItem={this.addItem} />;
     } else if (this.state.activeTab === 'list') {
       buttonNameRender = <List />;
     } else if (this.state.activeTab === 'pay') {
@@ -82,11 +83,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <Button
-          isSelected=''
-          onClick={this.selectAdd}
-          anotherItem={this.addItem}
-        >
+        <Button isSelected='' onClick={this.selectAdd}>
           Add
         </Button>
         <Button isSelected='' onClick={this.selectList}>

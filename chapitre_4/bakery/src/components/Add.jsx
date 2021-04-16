@@ -14,8 +14,8 @@ class Add extends React.Component {
   }
 
   updateProductName(e) {
-    console.log("i'm in updateProductName");
-    console.log('e.target.value before setState', e.target.value);
+    // console.log("i'm in updateProductName");
+    // console.log('e.target.value before setState', e.target.value);
 
     this.setState({
       productName: e.target.value,
@@ -23,7 +23,7 @@ class Add extends React.Component {
   }
 
   updatePrice(e) {
-    console.log("i'm in updatePrice");
+    // console.log("i'm in updatePrice");
 
     this.setState({
       price: e.target.value,
@@ -31,8 +31,9 @@ class Add extends React.Component {
   }
 
   render() {
-    console.log('this.state.productName after render', this.state.productName);
-    console.log('this.state.price', this.state.price);
+    // console.log('this.state.productName after render', this.state.productName);
+    // console.log('this.state.price after render', this.state.price);
+    // console.log('this.props after render', this.props);
     return (
       <>
         <input type='text' onChange={this.updateProductName} />
