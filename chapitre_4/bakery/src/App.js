@@ -74,7 +74,7 @@ class App extends React.Component {
     if (this.state.activeTab === 'add') {
       buttonNameRender = <Add anotherItem={this.addItem} />;
     } else if (this.state.activeTab === 'list') {
-      buttonNameRender = <List />;
+      buttonNameRender = <List items={this.state.items} />;
     } else if (this.state.activeTab === 'pay') {
       buttonNameRender = <Pay />;
     } else {

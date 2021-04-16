@@ -2,7 +2,20 @@ import React from 'react';
 
 class List extends React.Component {
   render() {
-    return <div>list</div>;
+    console.log('this.props list.jsx', this.props.items);
+
+    return (
+      <>
+        <ul>
+          {this.props.items.map((item) => (
+            <li>
+              <span>{item.name}</span>
+              <span>{item.price}</span>
+            </li>
+          ))}
+        </ul>
+      </>
+    );
   }
 }
 export default List;
