@@ -19,6 +19,7 @@ class App extends React.Component {
     this.selectAdd = this.selectAdd.bind(this);
     this.selectList = this.selectList.bind(this);
     this.selectPay = this.selectPay.bind(this);
+    this.addItem = this.addItem.bind(this);
   }
 
   onClickHandler(children) {
@@ -54,7 +55,17 @@ class App extends React.Component {
     });
   }
 
+  addItem(name, price) {
+    console.log("i'm in addItem method");
+    this.setState.items({
+      name: '',
+      price: 0,
+    });
+
+    console.log(this.state.items);
+  }
   render() {
+    console.log(this.state.items);
     let buttonNameRender = null;
 
     console.log('this.state.activeTab in render', this.state.activeTab);
@@ -71,7 +82,11 @@ class App extends React.Component {
 
     return (
       <div>
-        <Button isSelected='' onClick={this.selectAdd}>
+        <Button
+          isSelected=''
+          onClick={this.selectAdd}
+          anotherItem={this.addItem}
+        >
           Add
         </Button>
         <Button isSelected='' onClick={this.selectList}>
