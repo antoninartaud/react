@@ -21,20 +21,19 @@ class App extends React.Component {
   onClickHandler(children) {
     // event.preventDefault();
 
-    console.log("i'm in the onclickhandler");
+    // console.log("i'm in the onclickhandler");
     // console.log(event.target.innerText);
-    console.log(children);
+    console.log('children in the onclickhandler', children);
 
-    this.setState = {
+    this.setState({
       activeTab: children,
-    };
-
-    console.log(this.state.activeTab);
+    });
+    console.log('this.state.activeTab after set state', this.state.activeTab);
   }
 
   render() {
     let buttonNameRender = null;
-
+    console.log('this.state.activeTab in render', this.state.activeTab);
     if (this.state.activeTab === 'Add') {
       buttonNameRender = <Add />;
     } else if (this.state.activeTab === 'List') {
