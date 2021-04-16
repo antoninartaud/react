@@ -80,18 +80,36 @@ class App extends React.Component {
     } else {
       console.log('where is my tabname ?');
     }
+    // const buttonStyle={}
 
     return (
       <div>
-        <Button isSelected='' onClick={this.selectAdd}>
+        <h1 className='text-center display-4 pb-4'>Bakery</h1>
+
+        <Button
+          isSelected={this.state.activeTab === 'add' ? 'yes' : 'no'}
+          onClick={this.selectAdd}
+          className={this.is}
+          // style={{backgroundColor:}}
+        >
           Add
         </Button>
-        <Button isSelected='' onClick={this.selectList}>
+
+        <Button
+          isSelected={this.state.activeTab === 'list' ? 'yes' : 'no'}
+          onClick={this.selectList}
+          // items={this.state.items}
+        >
           List
         </Button>
-        <Button isSelected='' onClick={this.selectPay}>
+
+        <Button
+          isSelected={this.state.activeTab === 'pay' ? 'yes' : 'no'}
+          onClick={this.selectPay}
+        >
           Pay
         </Button>
+
         {buttonNameRender}
       </div>
     );

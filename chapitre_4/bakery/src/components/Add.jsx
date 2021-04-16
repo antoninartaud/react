@@ -45,7 +45,7 @@ class Add extends React.Component {
         >
           Add
         </button>
-        <div>add</div>
+        {/* <div>add</div> */}
       </>
     );
   }
