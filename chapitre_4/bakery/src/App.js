@@ -1,9 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Add from './components/Add.jsx';
-import List from './components/List.jsx';
-import Pay from './components/Pay.jsx';
+import Add from './views/Add.jsx';
+import List from './views/List.jsx';
+import Pay from './views/Pay.jsx';
 import Button from './components/Button.jsx';
 
 class App extends React.Component {
@@ -87,7 +87,7 @@ class App extends React.Component {
         <h1 className='text-center display-4 pb-4'>Bakery</h1>
 
         <Button
-          isSelected={this.state.activeTab === 'add' ? 'yes' : 'no'}
+          isSelected={this.state.activeTab === 'add'}
           onClick={this.selectAdd}
           className={this.is}
           // style={{backgroundColor:}}
@@ -96,7 +96,7 @@ class App extends React.Component {
         </Button>
 
         <Button
-          isSelected={this.state.activeTab === 'list' ? 'yes' : 'no'}
+          isSelected={this.state.activeTab === 'list'}
           onClick={this.selectList}
           // items={this.state.items}
         >
@@ -104,7 +104,7 @@ class App extends React.Component {
         </Button>
 
         <Button
-          isSelected={this.state.activeTab === 'pay' ? 'yes' : 'no'}
+          isSelected={this.state.activeTab === 'pay'}
           onClick={this.selectPay}
         >
           Pay
