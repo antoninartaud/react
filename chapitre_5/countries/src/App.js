@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Button from './components/Button.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -12,6 +13,7 @@ class App extends React.Component {
       population: '',
       region: '',
     };
+    this.getCountry = this.getCountry.bind(this);
   }
 
   componentDidMount() {
@@ -28,9 +30,22 @@ class App extends React.Component {
       });
   }
 
+  getCountry(country) {
+    fetch('https://restcountries.eu/rest/v2/name/' + country)
+      .then((response) => response.json())
+      .then((result) => {
+        this.setState({
+          name: result[0].name,
+        });
+      });
+  }
+
   render() {
     return (
       <>
+        <Button onClick={this.getCountry}>France</Button>
+        <Button onClick={this.getCountry}>Brazil</Button>
+        <Button onClick={this.getCountry}>Croatia</Button>
         <h1>{this.state.name}</h1>
         <p>{this.state.capital}</p>
         <img src={this.state.flag} />
