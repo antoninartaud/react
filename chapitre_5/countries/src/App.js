@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Button from './components/Button.jsx';
+import Card from './components/Card.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -18,12 +19,9 @@ class App extends React.Component {
 
   componentDidMount() {
     fetch('https://restcountries.eu/rest/v2/name/france')
-      
-      .then(
-        (response) => response.json())
-      
-      .then(
-        (result) => {
+      .then((response) => response.json())
+
+      .then((result) => {
         this.setState({
           name: result[0].name,
           capital: result[0].capital,
@@ -35,19 +33,16 @@ class App extends React.Component {
   }
 
   getCountry(country) {
-    console.log('i\'m in getCountry');
+    console.log("i'm in getCountry");
     console.log(country);
     fetch('https://restcountries.eu/rest/v2/name/' + country)
-      
-      .then(
-        (response) => response.json())
-      
-      .then(
-        (result) => {
-          this.setState({
-            name: result[0].name,
-          });
+      .then((response) => response.json())
+
+      .then((result) => {
+        this.setState({
+          name: result[0].name,
         });
+      });
   }
 
   render() {
@@ -58,11 +53,19 @@ class App extends React.Component {
         <Button onClick={this.getCountry}>Brazil</Button>
         <Button onClick={this.getCountry}>Croatia</Button>
 
-        <h1>{this.state.name}</h1>
+        {/* <h1>{this.state.name}</h1>
         <p>{this.state.capital}</p>
-        <img src={this.state.flag} alt='country flag'/>
+        <img src={this.state.flag} alt='country flag' />
         <p>{this.state.population}</p>
-        <p>{this.state.region}</p>
+        <p>{this.state.region}</p> */}
+
+        <Card
+          name={this.state.name}
+          capital={this.state.capital}
+          flag={this.state.flag}
+          population={this.state.population}
+          region={this.state.region}
+        />
       </>
     );
   }
