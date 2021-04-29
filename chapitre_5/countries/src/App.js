@@ -18,6 +18,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log('suis dans DidMount');
     fetch('https://restcountries.eu/rest/v2/name/france')
       .then((response) => response.json())
 
@@ -34,38 +35,41 @@ class App extends React.Component {
 
   getCountry(country) {
     console.log("i'm in getCountry");
-    console.log(country);
+    console.log('country dans getCountry:', country);
+
     fetch('https://restcountries.eu/rest/v2/name/' + country)
       .then((response) => response.json())
 
       .then((result) => {
         this.setState({
           name: result[0].name,
+          capital: result[0].capital,
+          flag: result[0].flag,
+          population: result[0].population,
+          region: result[0].region,
         });
       });
   }
 
   render() {
-    console.log(this.state.name);
+    console.log('this.state.name dans render:', this.state.name);
     return (
       <>
-        <Button onClick={this.getCountry}>France</Button>
-        <Button onClick={this.getCountry}>Brazil</Button>
-        <Button onClick={this.getCountry}>Croatia</Button>
+        <div className='d-flex justify-content-around'>
+          <Button onClick={this.getCountry}>France</Button>
+          <Button onClick={this.getCountry}>Brazil</Button>
+          <Button onClick={this.getCountry}>Croatia</Button>
+        </div>
 
-        {/* <h1>{this.state.name}</h1>
-        <p>{this.state.capital}</p>
-        <img src={this.state.flag} alt='country flag' />
-        <p>{this.state.population}</p>
-        <p>{this.state.region}</p> */}
-
-        <Card
-          name={this.state.name}
-          capital={this.state.capital}
-          flag={this.state.flag}
-          population={this.state.population}
-          region={this.state.region}
-        />
+        <div className='d-flex flex-column align-items-center'>
+          <Card
+            name={this.state.name}
+            capital={this.state.capital}
+            flag={this.state.flag}
+            population={this.state.population}
+            region={this.state.region}
+          />
+        </div>
       </>
     );
   }
