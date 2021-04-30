@@ -60,7 +60,7 @@ class App extends React.Component {
       case 'list':
         return <List listItems={this.state.items}></List>;
       case 'pay':
-        return <Pay></Pay>;
+        return <Pay items={this.state.items}></Pay>;
     }
   };
 
