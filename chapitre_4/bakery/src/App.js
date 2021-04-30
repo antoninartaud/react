@@ -1,116 +1,94 @@
+import './App.css';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import Add from './views/Add.jsx';
-import List from './views/List.jsx';
-import Pay from './views/Pay.jsx';
-import Button from './components/Button.jsx';
+
+import Button from './components/Button';
+import Add from './views/Add';
+import List from './views/List';
+import Pay from './views/Pay';
 
 class App extends React.Component {
   constructor() {
     super();
-
     this.state = {
-      activeTab: 'add',
+      activeTabs: 'add',
       items: [],
     };
-
-    this.onClickHandler = this.onClickHandler.bind(this);
     this.selectAdd = this.selectAdd.bind(this);
     this.selectList = this.selectList.bind(this);
     this.selectPay = this.selectPay.bind(this);
-    this.addItem = this.addItem.bind(this);
+    this.add = this.add.bind(this);
   }
 
-  onClickHandler(children) {
-    // event.preventDefault();
-
-    // console.log("i'm in the onclickhandler");
-    // console.log(event.target.innerText);
-    children = children.toLowerCase();
-
-    console.log('children in the onclickhandler', children);
-
+  selectAdd(e) {
+    console.log(e);
     this.setState({
-      activeTab: children,
-    });
-    // console.log('this.state.activeTab after set state', this.state.activeTab);
-  }
-
-  selectAdd() {
-    this.setState({
-      activeTab: 'add',
+      activeTabs: 'add',
     });
   }
 
   selectList() {
     this.setState({
-      activeTab: 'list',
+      activeTabs: 'list',
     });
   }
 
   selectPay() {
     this.setState({
-      activeTab: 'pay',
+      activeTabs: 'pay',
     });
   }
 
-  addItem(name, price) {
-    console.log("i'm in addItem method");
+  add(name, price) {
+    const obj = {
+      name: name,
+      price: price,
+    };
+    const newList = this.state.items;
+    newList.push(obj);
     this.setState({
-      items: [...this.state.items, { name, price }],
+      items: newList,
     });
-
-    // console.log(this.state.items);
   }
+
+  renderContent = () => {
+    // eslint-disable-next-line default-case
+    switch (this.state.activeTabs) {
+      case 'add':
+        return <Add addItem={this.add}></Add>;
+      case 'list':
+        return <List listItems={this.state.items}></List>;
+      case 'pay':
+        return <Pay></Pay>;
+    }
+  };
 
   render() {
-    console.log('ensemble items', this.state.items);
-
-    let buttonNameRender = null;
-
-    // console.log('this.state.activeTab in render', this.state.activeTab);
-
-    if (this.state.activeTab === 'add') {
-      buttonNameRender = <Add anotherItem={this.addItem} />;
-    } else if (this.state.activeTab === 'list') {
-      buttonNameRender = <List items={this.state.items} />;
-    } else if (this.state.activeTab === 'pay') {
-      buttonNameRender = <Pay />;
-    } else {
-      console.log('where is my tabname ?');
-    }
-    // const buttonStyle={}
-
     return (
-      <div>
-        <h1 className='text-center display-4 pb-4'>Bakery</h1>
-
+      <div className='App'>
         <Button
-          isSelected={this.state.activeTab === 'add'}
           onClick={this.selectAdd}
-          className={this.is}
-          // style={{backgroundColor:}}
+          isSelected={this.state.activeTabs === 'add' ? true : false}
         >
-          Add
+          {' '}
+          Add{' '}
         </Button>
-
         <Button
-          isSelected={this.state.activeTab === 'list'}
           onClick={this.selectList}
-          // items={this.state.items}
+          isSelected={this.state.activeTabs === 'list' ? true : false}
         >
-          List
+          {' '}
+          List{' '}
         </Button>
-
         <Button
-          isSelected={this.state.activeTab === 'pay'}
           onClick={this.selectPay}
+          isSelected={this.state.activeTabs === 'pay' ? true : false}
         >
-          Pay
+          {' '}
+          Pay{' '}
         </Button>
 
-        {buttonNameRender}
+        {this.renderContent()}
       </div>
     );
   }

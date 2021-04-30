@@ -1,54 +1,65 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class Add extends React.Component {
+class Add extends Component {
   constructor() {
     super();
-
     this.state = {
       productName: '',
       price: 1,
     };
-
     this.updateProductName = this.updateProductName.bind(this);
     this.updatePrice = this.updatePrice.bind(this);
   }
 
-  updateProductName(e) {
-    // console.log("i'm in updateProductName");
-    // console.log('e.target.value before setState', e.target.value);
-
+  updateProductName(event) {
     this.setState({
-      productName: e.target.value,
+      productName: event.target.value,
     });
   }
 
-  updatePrice(e) {
-    // console.log("i'm in updatePrice");
-
+  updatePrice(event) {
     this.setState({
-      price: e.target.value,
+      price: event.target.value,
     });
   }
+
+  click = () => {
+    // Dépendant de comment a été déclarer la fonction passé en props
+    // On va lui remonter un ou plusieurs arguments
+
+    // this.props.addItem({ name: this.state.productName, price: this.state.price})
+    this.props.addItem(this.state.productName, this.state.price);
+  };
 
   render() {
-    // console.log('this.state.productName after render', this.state.productName);
-    // console.log('this.state.price after render', this.state.price);
-    // console.log('this.props after render', this.props);
     return (
-      <>
-        <input type='text' onChange={this.updateProductName} />
-        <input type='range' min={1} max={10} onChange={this.updatePrice} />
-        <button
-          onClick={() =>
-            this.props.anotherItem(this.state.productName, this.state.price)
-          }
-        >
-          Add
-        </button>
-        {/* <div>add</div> */}
-      </>
+      <div className='container'>
+        <div className='row'>
+          <input
+            type='text'
+            className='col-10'
+            onChange={this.updateProductName}
+          ></input>
+          <button
+            type='button'
+            className='btn btn-primary col-2'
+            onClick={this.click}
+          >
+            Add
+          </button>
+        </div>
+        <div className='row'>
+          <input
+            type='range'
+            value={this.state.price}
+            onChange={this.updatePrice}
+            min='1'
+            max='10'
+          ></input>
+          <span>{this.state.price}</span>
+        </div>
+      </div>
     );
   }
 }
-
 export default Add;

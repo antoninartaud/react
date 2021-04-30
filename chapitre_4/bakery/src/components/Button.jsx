@@ -1,20 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class Button extends React.Component {
+class Button extends Component {
   render() {
-    console.log('this.props in button after render', this.props);
-
     return (
-      <>
-        <button
-          isSelected={
-            this.props.isSelected ? 'btn btn-primary' : 'btn btn-light'
-          }
-          onClick={() => this.props.onClick(this.props.children)}
-        >
-          {this.props.children}
-        </button>
-      </>
+      <button
+        onClick={this.props.onClick}
+        className={
+          this.props.isSelected === true ? 'btn btn-primary' : 'btn btn-light'
+        }
+        type='button'
+      >
+        {this.props.children}
+      </button>
     );
   }
 }

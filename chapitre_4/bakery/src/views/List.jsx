@@ -1,20 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class List extends React.Component {
+class List extends Component {
   render() {
-    console.log('this.props list.jsx', this.props.items);
-
     return (
-      <>
-        <ul>
-          {this.props.items.map((item) => (
+      <ul>
+        {this.props.listItems.map((curr) => {
+          return (
             <li>
-              <span>{item.name}</span>
-              <span>{item.price}</span>
+              {curr.name} - {curr.price}{' '}
             </li>
-          ))}
-        </ul>
-      </>
+          );
+        })}
+      </ul>
     );
   }
 }
