@@ -19,7 +19,7 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log('suis dans DidMount');
-    fetch('https://restcountries.eu/rest/v2/name/france')
+    fetch('http://localhost:8000/countries/france')
       .then((response) => response.json())
 
       .then((result) => {
@@ -37,7 +37,7 @@ class App extends React.Component {
     console.log("i'm in getCountry");
     console.log('country dans getCountry:', country);
 
-    fetch('https://restcountries.eu/rest/v2/name/' + country)
+    fetch('http://localhost:8000/countries/' + country)
       .then((response) => response.json())
 
       .then((result) => {
