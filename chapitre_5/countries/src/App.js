@@ -56,11 +56,15 @@ class App extends React.Component {
   render() {
     // console.log('this.state.name dans render:', this.state.name);
     return (
-      <>
-        <div className='d-flex justify-content-around'>
-          <Button onClick={this.getCountry}>France</Button>
-          <Button onClick={this.getCountry}>Brazil</Button>
-          <Button onClick={this.getCountry}>Croatia</Button>
+      <div className='container'>
+        <div className='row'>
+          <div className='d-flex justify-content-evenly'>
+            <Button onClick={this.getCountry}>France</Button>
+
+            <Button onClick={this.getCountry}>Brazil</Button>
+
+            <Button onClick={this.getCountry}>Croatia</Button>
+          </div>
         </div>
 
         <div className='d-flex flex-column align-items-center'>
@@ -72,7 +76,7 @@ class App extends React.Component {
             region={this.state.region}
           />
         </div>
-      </>
+      </div>
     );
   }
 }
