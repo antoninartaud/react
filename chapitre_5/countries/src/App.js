@@ -18,41 +18,43 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('suis dans DidMount');
-    fetch('http://localhost:8000/countries/france')
+    // console.log('suis dans DidMount');
+
+    fetch('http://localhost:8000/countries/France')
       .then((response) => response.json())
 
       .then((result) => {
+        // console.log(result);
         this.setState({
-          name: result[0].name,
-          capital: result[0].capital,
-          flag: result[0].flag,
-          population: result[0].population,
-          region: result[0].region,
+          name: result.name,
+          capital: result.capital,
+          flag: result.flag,
+          population: result.population,
+          region: result.region,
         });
       });
   }
 
   getCountry(country) {
-    console.log("i'm in getCountry");
-    console.log('country dans getCountry:', country);
+    // console.log("i'm in getCountry");
+    // console.log('country dans getCountry:', country);
 
     fetch('http://localhost:8000/countries/' + country)
       .then((response) => response.json())
 
       .then((result) => {
         this.setState({
-          name: result[0].name,
-          capital: result[0].capital,
-          flag: result[0].flag,
-          population: result[0].population,
-          region: result[0].region,
+          name: result.name,
+          capital: result.capital,
+          flag: result.flag,
+          population: result.population,
+          region: result.region,
         });
       });
   }
 
   render() {
-    console.log('this.state.name dans render:', this.state.name);
+    // console.log('this.state.name dans render:', this.state.name);
     return (
       <>
         <div className='d-flex justify-content-around'>
