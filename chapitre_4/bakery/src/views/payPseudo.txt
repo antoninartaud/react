@@ -1,0 +1,35 @@
+
+Click bouton Pay, dans la vue Pay: 
+  1) Affichage de:
+    1.1 - Les sous totaux pour le calcul de la facture initialiser à 0
+    1.2 - Les images des items de la list afficher dans la vue Listen
+
+  2) Click sur une item image:
+    Affichage de :
+      2.1 - Nom et quantité de click effectué sur image
+      2.2 - Mise à jour de la facture en fonction des items clikés et de leur quantité
+
+
+Données nécessaires pour:
+  1.1 : total: 0,
+        totalTVA: 0,
+        totalEcoTax: 0,
+        totalTTC: 0,
+
+        D'où vient les Données?: 
+        Données dans le state du composant Pay car ne concerne que le composant Pay 
+            Création d'un state avec comme clé les différents sous-totaux, initialisé à 0 dans le constructeur de la classe
+
+        Affichage des différentes valeurs du state des sous-totaux dans le render du composant Pay
+
+  1.2 : Images à mettre dans dossier public/images
+        Le choix des Images à mettre dans la vue Pay sont en fonction de la présence de l'Item dans la vue List 
+
+          D'où vient les Données?:
+            Props Items = listItems transmises par App
+            
+            Comment transmettre les images correspondants à la liste?
+
+
+        
+        

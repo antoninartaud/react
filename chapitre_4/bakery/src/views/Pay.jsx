@@ -18,16 +18,22 @@ class Pay extends Component {
     console.log(`I'm in handleSelect! name: ${name} and price:${price}`);
   }
 
+  invoiceCalculation() {}
+
   render() {
-    console.log(this.props.items);
+    console.log('this.props.items dans render pay', this.props.items);
     return (
       <>
         <div>Pay</div>
         <div>
-          <p>{this.state.total}</p>
+          <p>Total HT: {this.state.total}</p>
+          <p>TVA: {this.state.totalTVA}</p>
+          <p>Eco Tax: {this.state.totalEcoTax}</p>
+          <p>Total TTC: {this.state.totalTTC}</p>
         </div>
 
         {/* <Card itemName='croissant' /> */}
+        <Card items={this.props.items} />
       </>
     );
   }
