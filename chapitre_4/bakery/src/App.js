@@ -86,7 +86,7 @@ class App extends React.Component {
           Pay
         </Button>
 
-        <Card itemName='' price='' onClick='' />
+        {/* <Card itemName='' price='' onClick='' /> */}
 
         {this.renderContent()}
       </div>

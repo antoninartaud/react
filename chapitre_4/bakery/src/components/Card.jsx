@@ -5,21 +5,19 @@ class Card extends React.Component {
     console.log(props);
     super(props);
     this.state = {
-      image: '../../public/images/item.png',
+      image: '../images/item.png',
     };
   }
 
   componentDidMount() {
     fetch(
-      ` https://raw.githubusercontent.com/konexio/digitous-assest/main/bakery/${this.props.itemName}`
+      ` https://raw.githubusercontent.com/konexio/digitous-assest/main/bakery/${this.props.productName}.png`
     )
       .then((response) => response.blob())
       .then((result) => {
         let strUrl = URL.createObjectURL(result);
-        // console.log(strUrl);
+        console.log('strUrl:', strUrl);
         // console.log(typeof strUrl);
-        strUrl = strUrl.substr(5, strUrl.length);
-        console.log('strUrl in fetch then', strUrl);
         this.setState({
           image: strUrl,
         });
@@ -28,10 +26,11 @@ class Card extends React.Component {
 
   render() {
     console.log('this.state.image in render', this.state.image);
+    console.log('this.props:', this.props);
     return (
       <button
         onClick={() =>
-          this.props.onClick(this.props.itemName, this.props.price)
+          this.props.onClick(this.props.productName, this.props.price)
         }
       >
         <img src={this.state.image} alt='item' />
