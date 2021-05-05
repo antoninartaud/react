@@ -1,8 +1,9 @@
 import React from 'react';
+import moviesData from '../moviesData';
 
 class Movie extends React.Component {
   render() {
-    return <p className={'display-1'}>Boy meets girl</p>;
+    return <div></div>;
   }
 }
 
