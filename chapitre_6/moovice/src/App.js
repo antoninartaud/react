@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Favorites from './views/Favorites';
@@ -15,26 +14,24 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <nav>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/weekly'>Weekly</Link>
-          </li>
-          <li>
-            <Link to='/weekly-battle'>WeeklyBattle</Link>
-          </li>
-          <li>
-            <Link to='/popular'>Popular</Link>
-          </li>
-          <li>
-            <Link to='/popular-battle'>Popular-Battle</Link>
-          </li>
-          <li>
-            <Link to='/favorites'>Favorites</Link>
-          </li>
-        </nav>
+        <li>
+          <Link to='/'>Home</Link>
+        </li>
+        <li>
+          <Link to='/weekly'>Weekly</Link>
+        </li>
+        <li>
+          <Link to='/weekly-battle'>WeeklyBattle</Link>
+        </li>
+        <li>
+          <Link to='/popular'>Popular</Link>
+        </li>
+        <li>
+          <Link to='/popular-battle'>Popular-Battle</Link>
+        </li>
+        <li>
+          <Link to='/favorites'>Favorites</Link>
+        </li>
 
         <Switch>
           <Route exact path='/' component={Home}></Route>
