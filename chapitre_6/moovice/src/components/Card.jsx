@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
 class Card extends Component {
-  // state = {};
   render() {
+    // console.log('this.props ds render Card', this.props);
     return (
-      <div>
+      <div className='text-center'>
         <img
           src={`https://image.tmdb.org/t/p/w300${this.props.poster_path}`}
+          onClick={this.props.onClick}
           alt=''
         />
         <h2>{this.props.title}</h2>
@@ -18,3 +19,5 @@ class Card extends Component {
 }
 
 export default Card;
+
+// onClick={this.props.onClick}
