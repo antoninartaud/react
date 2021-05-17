@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Card from '../components/Card';
+import Card from '../components/CardFg';
 
 class PopularBattle extends Component {
   state = {
@@ -24,20 +24,9 @@ class PopularBattle extends Component {
   updateIndexMovieBattle = (movieId) => {
     console.log('updateIndexMovieBattle', typeof movieId);
 
-    const idsFavoritesFG = localStorage.getItem('favorites');
-    console.log(
-      "idsFavoritesFG=localStorage.getItem('favorites'):",
-      idsFavoritesFG
-    );
-    console.log(
-      "idsFavoritesFG=localStorage.getItem('favorites') typeof:",
-      typeof idsFavoritesFG
-    );
-
     const idsFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
     console.log('idsFavorites', idsFavorites);
-    console.log('idsFavorites typeof:', typeof idsFavorites);
 
     // if (!idsFavorites.find(elem => elem === movieId)) {
     if (!idsFavorites.includes(movieId)) {
