@@ -15,6 +15,7 @@ class PopularBattle extends Component {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
+        console.log('data.results in popularBattle component', data.results);
         this.setState({
           movies: data.results,
         });
