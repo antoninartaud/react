@@ -9,8 +9,8 @@ class Weekly extends Component {
   };
 
   componentDidMount() {
-    let today = moment().format('YY-MM-DD');
-    let lastWeek = moment().subtract(7, 'days').format('YY-MM-DD');
+    let today = moment().format('YYYY-MM-DD');
+    let lastWeek = moment().subtract(7, 'days').format('YYYY-MM-DD');
 
     const url =
       // 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=e441f8a3a151d588a4932d2c5d310769';
@@ -29,11 +29,11 @@ class Weekly extends Component {
   }
 
   render() {
-    let momentNow = moment().format('YY-MM-DD');
+    let momentNow = moment().format('YYYY-MM-DD');
     console.log(momentNow);
     console.log(typeof momentNow);
 
-    let lastWeek = moment().subtract(7, 'days').format('YY-MM-DD');
+    let lastWeek = moment().subtract(7, 'days').format('YYYY-MM-DD');
     console.log(lastWeek);
     console.log(typeof lastWeek);
 
