@@ -32,17 +32,7 @@ class Favorites extends Component {
   };
 
   render() {
-    // const favoritesF = this.getStorage();
-    // console.log(favoritesF);
-    // this.getMovie(460465);
     console.log('this.state.favIDs:', this.state.favIDs);
-    // const favorites = JSON.parse(localStorage.getItem('favorites'));
-    // console.log('favorites ', favorites);
-    // console.log('favorites typeof', typeof favorites);
-    // console.log('this.state.favIDs:', this.state.favIDs);
-    // const arrFavIDs = this.state.favIDs.split(' ');
-    // JSON.parse(localStorage.getItem('favorites'))
-    // console.log('arrFavIDs:', arrFavIDs);
     console.log('this state movies ds render', this.state.movies);
 
     return <h1>Favorites</h1>;
