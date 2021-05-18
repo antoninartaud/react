@@ -7,6 +7,7 @@ class Favorites extends Component {
   };
 
   componentDidMount() {
+    console.log('this in dimount', this);
     const arrFavIDs = this.state.favIDs;
     arrFavIDs.map((elem) => this.getMovie(elem));
   }
