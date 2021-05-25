@@ -1,42 +1,47 @@
 import React, { Component } from 'react';
+import Card from '../components/Card';
+import { getMovieAPI } from '../utils/Api';
 
 class Favorites extends Component {
   state = {
     movies: [],
-    favIDs: this.getStorage(),
+    favIds: this.getStorage(),
   };
-
-  componentDidMount() {
-    console.log('this in dimount', this);
-    const arrFavIDs = this.state.favIDs;
-    arrFavIDs.map((elem) => this.getMovie(elem));
-  }
 
   getStorage() {
-    const favorites = JSON.parse(localStorage.getItem('favorites'));
-    // console.log('getStorage favorites component:', favorites);
-    return favorites;
+    return JSON.parse(localStorage.getItem('favorites')) || [];
   }
 
-  getMovie = (id) => {
-    // console.log('id', id);
-    let url = `http://api.themoviedb.org/3/movie/${id}?api_key=e441f8a3a151d588a4932d2c5d310769`;
+  getMovie(id) {
+    getMovieAPI(id).then((data) => {
+      const newMovies = [...this.state.movies, data];
 
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log('data dans fetch', data);
-        this.setState({
-          movies: [...this.state.movies, data],
-        });
+      this.setState({
+        movies: newMovies,
       });
-  };
+    });
+  }
+
+  componentDidMount() {
+    this.state.favIds.map((elem) => this.getMovie(elem));
+  }
 
   render() {
-    console.log('this.state.favIDs:', this.state.favIDs);
-    console.log('this state movies ds render', this.state.movies);
+    return (
+      <div className='container'>
+        <h1 className='text-center'>Favorites</h1>
 
-    return <h1>Favorites</h1>;
+        <div className='row'>
+          {this.state.movies.map((elem) => {
+            return (
+              <div className='col-6'>
+                <Card {...elem} />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
   }
 }
 
