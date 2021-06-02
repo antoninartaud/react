@@ -8,13 +8,12 @@ const StudentList = () => {
     const url = 'http://localhost:8000/students';
 
     axios.get(url).then((response) => {
-      // console.log('response.data.students', response.data.students);
       setStudents(response.data);
     });
   }, []);
 
   return (
-    <div>
+    <div className='col-6'>
       <h2>List Students</h2>
 
       <ul>

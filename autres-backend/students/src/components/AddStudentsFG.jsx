@@ -6,7 +6,7 @@ export default function AddStudents() {
 
   const handleInputChange = (e) => {
     // console.log("i'm in handle");
-    console.log('e.target.value', e.target.value);
+    // console.log('e.target.value', e.target.value);
     const newName = e.target.value;
     setStudentName([...studentName, newName]);
   };
